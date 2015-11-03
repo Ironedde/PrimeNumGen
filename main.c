@@ -2,8 +2,10 @@
 #include <math.h>
 #include <stdlib.h>
 
+
+
 int primes[8096];
-int ind = 2;
+int ind = 2;		//Step
 
 int digit_sum(int n) {
 
@@ -18,12 +20,12 @@ int digit_sum(int n) {
 }
 
 int is_prime(int prime) {
-  int sr = (int)sqrt((double)prime);
-  if(digit_sum(prime) % 3 == 0) return 0;
-  int j;
+  int sr = (int)sqrt((double)prime);			//Where to stop
+  if(digit_sum(prime) % 3 == 0) return 0;		//dividable by 3?
+  int j;			
   for(j = 0; j < ind+1; j++) {
-   if(primes[j] > sr) break;
-    if(prime % primes[j] == 0) return 0;
+   if(primes[j] > sr) break;				//Time to stop?
+    if(prime % primes[j] == 0) return 0;		//Found factor
   }
 
   return 1;
