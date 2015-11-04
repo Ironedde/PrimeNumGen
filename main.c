@@ -4,8 +4,10 @@
 
 
 
+
+
 int primes[8096];
-int ind = 2;		//Step
+int ind = 2;						//Array start
 
 int digit_sum(int n) {
 
@@ -21,9 +23,9 @@ int digit_sum(int n) {
 
 int is_prime(int prime) {
   int sr = (int)sqrt((double)prime);			//Where to stop
-  if(digit_sum(prime) % 3 == 0) return 0;		//dividable by 3?
+  if(digit_sum(prime) % 3 == 0) return 0;		//Sum dividable by 3?
   int j;			
-  for(j = 0; j < ind+1; j++) {
+  for(j = 0; j < ind+1; j++) {				//Go through the entire array of primes
    if(primes[j] > sr) break;				//Time to stop?
     if(prime % primes[j] == 0) return 0;		//Found factor
   }
@@ -33,14 +35,14 @@ int is_prime(int prime) {
 
 
 int main(int argc, char** argv) {
-  primes[0] = 5;
-  primes[1] = 7;
+  primes[0] = 5;					//
+  primes[1] = 7;					//Basic primes
 
   int i;
-  for(i = 9 ;; i += 2) {
-    if(is_prime(i)) {
-      primes[ind++] = i;
-      printf("Found prime: %d\n", i);
+  for(i = 9 ;; i += 2) {				//Every 2:nd
+    if(is_prime(i)) {					//If prime
+      primes[ind++] = i;				//Insert into array
+      printf("Found prime: %d\n", i);			
     }
   }
 }
